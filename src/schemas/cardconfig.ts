@@ -1,4 +1,4 @@
-import { Schema, Document, model } from 'mongoose'
+import { Schema, Document, model, models } from 'mongoose'
 import { IInstance }  from './instance'
 
 export interface ICard extends Document {
@@ -15,4 +15,6 @@ export const CardSchema: Schema = new Schema({
     bgcolors: {type:[String], maxlength: 3},
 })
 
-export const CardConfig = model('cardconfig', CardSchema)
+const CardConfig = models.CardConfig || model<ICard>('CardConfig', CardSchema)
+
+export default CardConfig

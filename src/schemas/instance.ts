@@ -1,6 +1,6 @@
 import { Schema, Document, model } from 'mongoose'
 
-let emailRegex: RegExp = /\S+@\S+\.\S+/
+let emailRegex: RegExp = /\S+@\S+\.\S+/ //very loose but oke
 
 export interface IInstance extends Document {
     password: string
@@ -14,4 +14,4 @@ export const InstanceSchema: Schema = new Schema({
     email: {type: String, required: false, match: [emailRegex, 'invalid email']}
 })
 
-export const Instance = model('cardconfig', InstanceSchema)
+export const Instance = model('InstanceConfig', InstanceSchema)

@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import React, { useEffect, useState } from 'react'
-import config from '../pages/api/config/config'
 
 export const CountWrapper = styled.div`
     padding-top: 1vh;
@@ -21,7 +20,7 @@ export const CountWrapper = styled.div`
 export default function Timer(props){
     const calcTimeLeft = () => {
         let year = new Date().getFullYear();
-        const diff = +config.activationDate - +new Date()
+        const diff = +props.activationDate - +new Date()
         let timeLeft = {}
         if (diff > 0){
             timeLeft = {
@@ -56,7 +55,7 @@ export default function Timer(props){
 
     return(
         <CountWrapper>
-            {timerComponents.length ? timerComponents : <span>It's {config.name}'s birthday!</span>}
+            {timerComponents.length ? timerComponents : <span>It's {props.name}'s birthday!</span>}
             <p>{props.children}</p>
         </CountWrapper>
     )

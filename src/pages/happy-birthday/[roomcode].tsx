@@ -10,12 +10,8 @@ import Head from 'next/head'
 import { Router, useRouter } from 'next/router'
 
 Page.getInitialProps = async ({ qeury: { roomcode } }) => {
-    const res = await fetch(`https://kitty.fail/api/${roomcode}`)
+    const res = await fetch(`http://localhost:3000/api/${roomcode}`)
     const { data } =  await res.json()
-
-    if(res.status == 404){
-        
-    }
 
     return({config: data})
 }
@@ -23,16 +19,22 @@ Page.getInitialProps = async ({ qeury: { roomcode } }) => {
 function Page({ config }){
     const router = useRouter()
     const { roomcode } = router.query
-
-    if(Date.now() < config.activationDate.getTime()){
+    if( !config ){
         return(
-            <Layout title={`No peeking!`}>
+            <Layout title={'room code not found'}>
+
+            </Layout>
+        )
+    }
+    else if(Date.now() < config.activationDate.getTime()){
+        return(
+            <Layout title={'No peeking!'}>
                 <br/>
                 <Header>It's not {config.name}'s birthday yet!</Header>
                 <br/>
                 <br/>
                 <br/>
-                <Timer>Until {config.name}'s birthday</Timer>
+                <Timer activationDate={config.activationDate}>Until {config.name}'s birthday</Timer>
             </Layout>
         )
     }

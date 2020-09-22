@@ -9,8 +9,14 @@ const connectionConfig = {
 }
 
 export const getConnection = async (): Promise<Connection> => {
+    console.log('starting connection')
     if(conn == null){
-        conn = await createConnection(MONGO_URL, connectionConfig)
+        try{
+            conn = await createConnection(MONGO_URL, connectionConfig)
+        } catch (err){
+            console.log(err)
+        }
+        
     }
     return conn
 }

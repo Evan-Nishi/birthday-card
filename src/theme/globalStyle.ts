@@ -5,7 +5,7 @@ import palette from '../theme/palette'
 const GlobalStyle = createGlobalStyle`
     html{
         font-family: sans-serif;
-        background: linear-gradient(45deg, ${palette.colors.bg1},${palette.colors.bg2}, ${palette.colors.bg3});
+        background: linear-gradient(45deg, rgba(137,255,255,0.75), rgba(161,252,143, 0.25),rgba(255,167,137, 1));
         background-size: 400% 400%;
         -webkit-animation: gradientBG 20s ease infinite;
         animation: gradientBG 20s ease infinite;
