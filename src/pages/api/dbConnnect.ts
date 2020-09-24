@@ -12,7 +12,7 @@ export const getConnection = async (): Promise<Connection> => {
     console.log('starting connection')
     if(conn == null){
         try{
-            conn = await createConnection(MONGO_URL, connectionConfig)
+            conn = createConnection(MONGO_URL, connectionConfig)
         } catch (err){
             console.log(err)
         }
