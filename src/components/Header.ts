@@ -8,7 +8,7 @@ const Header = styled.h1`
     margin: auto;
     text-align: center;
     padding: 3vh;
-    width: 60vw;
+    width: 80vw;
     border:solid 5px black;
 `
 

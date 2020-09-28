@@ -1,5 +1,17 @@
 import Footer from'./Footer'
 import Head from 'next/head'
+import styled from 'styled-components'
+
+interface WrapperProps {
+    readonly bgcolors: []
+}
+
+export const Wrapper = styled.div<WrapperProps>`
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(45deg, ${props => props.bgcolors || "rgba(137,255,255,0.75), rgba(161,252,143, 0.25),rgba(255,167,137, 1)"});
+`
+
 
 function Layout(props){
     return(

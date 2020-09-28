@@ -33,3 +33,9 @@ export default function Button(props){
         </ButtonWrapper>
     )
 }
+
+export const Link = styled.a`
+    color: black;
+    font-weight: 900;
+    cursor: pointer;
+`
