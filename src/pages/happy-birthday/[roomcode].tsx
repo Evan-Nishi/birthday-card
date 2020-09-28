@@ -1,4 +1,4 @@
-import Layout from '../../components/Layout'
+import Layout, {Wrapper} from '../../components/Layout'
 import Card from '../../components/Card'
 import Header from '../../components/Header'
 import Timer from '../../components/Countdown'
@@ -7,10 +7,12 @@ import { useState, useEffect } from 'react'
 import ConfettiGenerator from 'confetti-js'
 import Button from '../../components/Button'
 import Head from 'next/head'
-import { Router, useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 
-Page.getInitialProps = async ({ qeury: { roomcode } }) => {
-    const res = await fetch(`http://localhost:3000/api/${roomcode}`)
+
+Page.getInitialProps = async ({ query: { roomcode } }) => {
+    const res = await fetch(`http://localhost:3000/api/config/${roomcode}`)
+    console.log(res)
     const { data } =  await res.json()
 
     return({config: data})
@@ -18,11 +20,10 @@ Page.getInitialProps = async ({ qeury: { roomcode } }) => {
 
 function Page({ config }){
     const router = useRouter()
-    const { roomcode } = router.query
     if( !config ){
         return(
             <Layout title={'room code not found'}>
-
+                <h1>Roomcode not found</h1>
             </Layout>
         )
     }
@@ -52,7 +53,7 @@ function Page({ config }){
             return () => confetti.clear()
         })
         return(
-            <div>
+            <Wrapper bgcolors={config.bgcolors.toString()}>
                 <Head>
                     <title>🎉Happy Birthday {config.name}!!!🎉</title>
                 </Head>
@@ -91,7 +92,7 @@ function Page({ config }){
                     </FlipWrapper>
                 </Card>
                 <br/>
-            </div>
+            </Wrapper>
         )
     }
 }

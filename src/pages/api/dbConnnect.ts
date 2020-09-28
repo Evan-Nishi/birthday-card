@@ -18,5 +18,6 @@ export const getConnection = async (): Promise<Connection> => {
         }
         
     }
+    console.log('connected to mongodb')
     return conn
 }

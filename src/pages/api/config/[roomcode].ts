@@ -11,7 +11,8 @@ export default async (req, res) => {
     switch (method) {
         case 'GET':
             try {
-                const card = await CardConfig.findOne({parent_instance: roomcode})
+                const card = await CardConfig.find({parent_instance: roomcode})
+                console.log(card)
                 if(!card){
                     return res.status(400).json( {success: false, error: 'invalid room code'},  )
                 }
@@ -19,7 +20,20 @@ export default async (req, res) => {
             } catch (error) {
                 res.status(400).json({success: false, error: error })
             }
-
+            break
+        case 'PUT':
+            try {
+                const card = new CardConfig({
+                    parent_instance: roomcode,
+                    name: req.body.name,
+                    date: req.body.date,
+                    bgcolors: req.body.colors
+                })
+                
+            } catch (error) {
+                res.status(400).json({success: false, error: error})
+            }
+            break
     }
 }
 

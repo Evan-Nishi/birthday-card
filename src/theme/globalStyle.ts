@@ -12,11 +12,9 @@ const GlobalStyle = createGlobalStyle`
         height: 100vw;
         overflow-x: hidden;
     }
-
     .flipped{
         transform: rotateY(180deg);
     }
-
     .centered{
         margin-left: 50vw;
     }
@@ -25,7 +23,6 @@ const GlobalStyle = createGlobalStyle`
         position: absolute;
         pointer-events: none;
     }
-
     @-webkit-keyframes gradientBG {
 	    0% {
 		    background-position: 0% 50%;
