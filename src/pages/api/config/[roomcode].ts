@@ -1,5 +1,5 @@
 import { getConnection } from '../dbConnnect'
-import CardConfig from '../../../schemas/cardconfig'
+import CardConfig, {ICard} from '../../../schemas/cardconfig'
 
 getConnection()
 
@@ -29,10 +29,13 @@ export default async (req, res) => {
                     date: req.body.date,
                     bgcolors: req.body.colors,
                     host_email: req.body.email,
-                    passcode: req.body.pass,
+                    passcode: req.body.passcode,
                 })
                 console.log(card)
+
                 const data = await card.save()
+                
+                console.log('done')
                 res.send(200).json({success: true, data: data})
                 
             } catch (error) {

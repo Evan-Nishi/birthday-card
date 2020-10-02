@@ -4,3 +4,4 @@ node_modules/
 next-env.d.ts
 .next/
 vercel.json
+test.js

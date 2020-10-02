@@ -23,7 +23,7 @@ export default async (req, res) => {
                     date: req.body.date,
                     bgcolors: req.body.colors,
                     host_email: req.body.email,
-                    passcode: req.body.pass,
+                    passcode: req.body.passcode,
                 })
 
                 const data = await card.save()

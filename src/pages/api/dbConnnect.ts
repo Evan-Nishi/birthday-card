@@ -1,19 +1,16 @@
-import { Connection, createConnection } from 'mongoose'
+import mongoose from 'mongoose'
 import { MONGO_URL } from '../../utils/env'
+const connection = {isConnected: null}
 
-let conn: Connection = null
-
-export const getConnection = async (): Promise<Connection> => {
-    console.log('starting connection')
-    if(conn == null){
-        try{
-            conn = await createConnection(MONGO_URL, {useNewUrlParser: true, useUnifiedTopology: true})
-            console.log('connection successfully created')
-        } catch (err){
-            console.log(err)
-        }
-        
+export async function getConnection() {
+    if (connection.isConnected) {
+        return;
     }
-    console.log('connected to mongodb')
-    return conn
+
+    const db = await mongoose.connect(MONGO_URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    });
+
+    connection.isConnected = db.connections[0].readyState
 }
