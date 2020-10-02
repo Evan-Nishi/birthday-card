@@ -14,12 +14,12 @@ export interface ICard extends Document {
 export const CardSchema: Schema = new Schema({
     roomcode: {type: String, required: true},
     name: {type: String, required: true},
-    date: {type: Date, required: true},
+    date: {type: Date, required: false},
     bgcolors: {type:[String], maxlength: 3},
     host_email: {type: String, required: false, match: [emailRegex, 'must be a valid email']},
     passcode: {type: String, required: true, minlength: 8}
 })
 
-const CardConfig = models.CardConfig || model<ICard>('CardConfig', CardSchema)
+const CardConfig = models.Config || model<ICard>('Config', CardSchema)
 
 export default CardConfig

@@ -21,14 +21,19 @@ export default async (req, res) => {
                 res.status(400).json({success: false, error: error })
             }
             break
-        case 'PUT':
+        case 'POST':
             try {
                 const card = new CardConfig({
-                    parent_instance: roomcode,
+                    roomcode: roomcode,
                     name: req.body.name,
                     date: req.body.date,
-                    bgcolors: req.body.colors
+                    bgcolors: req.body.colors,
+                    host_email: req.body.email,
+                    passcode: req.body.pass,
                 })
+                console.log(card)
+                const data = await card.save()
+                res.send(200).json({success: true, data: data})
                 
             } catch (error) {
                 res.status(400).json({success: false, error: error})

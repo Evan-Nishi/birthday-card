@@ -1,18 +1,14 @@
-import { MONGO_URL } from '../../utils/env'
 import { Connection, createConnection } from 'mongoose'
+import { MONGO_URL } from '../../utils/env'
 
 let conn: Connection = null
-
-const connectionConfig = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}
 
 export const getConnection = async (): Promise<Connection> => {
     console.log('starting connection')
     if(conn == null){
         try{
-            conn = createConnection(MONGO_URL, connectionConfig)
+            conn = await createConnection(MONGO_URL, {useNewUrlParser: true, useUnifiedTopology: true})
+            console.log('connection successfully created')
         } catch (err){
             console.log(err)
         }
