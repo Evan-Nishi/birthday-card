@@ -30,7 +30,7 @@ export default async (req, res) => {
 
                 res.status(200).json({success: true, data: data})
             } catch (error) {
-                res.status(400).json({success: false, error: error})
+                res.status(400).json({success: true, error: (error.code == 11000 && error.name == 'MongoError' ? 'roomcode taken!' : error)})
             }
             break
     }
