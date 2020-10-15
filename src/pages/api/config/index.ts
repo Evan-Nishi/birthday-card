@@ -24,13 +24,14 @@ export default async (req, res) => {
                     bgcolors: req.body.colors,
                     host_email: req.body.email,
                     passcode: req.body.passcode,
+                    password: req.body.password
                 })
 
                 const data = await card.save()
 
-                res.status(200).json({success: true, data: data})
+                res.status(200).json({success: true})
             } catch (error) {
-                res.status(400).json({success: true, error: (error.code == 11000 && error.name == 'MongoError' ? 'roomcode taken!' : error)})
+                res.status(400).json({success: false, error: (error.code == 11000 && error.name == 'MongoError' ? 'roomcode taken!' : error)})
             }
             break
     }

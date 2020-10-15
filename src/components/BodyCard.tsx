@@ -9,7 +9,7 @@ const Wrapper = styled.div`
     text-align: center;
     padding: 3vh;
     width: 90vw;
-    font-size: 15px;
+    font-size: 20px;
     border:solid 5px black;
 `
 export default function BodyCard(props){

@@ -7,19 +7,17 @@ import { useState, useEffect } from 'react'
 import ConfettiGenerator from 'confetti-js'
 import Button from '../../components/Button'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 
 
 Page.getInitialProps = async ({ query: { roomcode } }) => {
     const res = await fetch(`http://localhost:3000/api/config/${roomcode}`)
     console.log(res)
     const { data } =  await res.json()
-
+    console.log(data)
     return({config: data})
 }
 
 function Page({ config }){
-    const router = useRouter()
     if( !config ){
         return(
             <Layout title={'room code not found'}>
@@ -27,7 +25,7 @@ function Page({ config }){
             </Layout>
         )
     }
-    else if(Date.now() < config.activationDate.getTime()){
+    else if(Date.now() < config.date.getTime()){
         return(
             <Layout title={'No peeking!'}>
                 <br/>
@@ -35,7 +33,7 @@ function Page({ config }){
                 <br/>
                 <br/>
                 <br/>
-                <Timer activationDate={config.activationDate}>Until {config.name}'s birthday</Timer>
+                <Timer activationDate={config.date}>Until {config.name}'s birthday</Timer>
             </Layout>
         )
     }
