@@ -19,7 +19,6 @@ export const CountWrapper = styled.div`
 //used https://github.com/do-community/react-hooks-timer/blob/master/src/App.js
 export default function Timer(props){
     const calcTimeLeft = () => {
-        let year = new Date().getFullYear();
         const diff = +props.activationDate - +new Date()
         let timeLeft = {}
         if (diff > 0){

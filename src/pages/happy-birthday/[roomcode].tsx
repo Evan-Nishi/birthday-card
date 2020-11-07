@@ -8,32 +8,31 @@ import ConfettiGenerator from 'confetti-js'
 import Button from '../../components/Button'
 import Head from 'next/head'
 
-
 Page.getInitialProps = async ({ query: { roomcode } }) => {
     const res = await fetch(`http://localhost:3000/api/config/${roomcode}`)
-    console.log(res)
     const { data } =  await res.json()
-    console.log(data)
+    const signatures = await fetch(`https://localhost:300/api/config/${roomcode}`)
     return({config: data})
 }
 
 function Page({ config }){
+    let date = ( config ? new Date(config.date): new Date("0"))
     if( !config ){
         return(
-            <Layout title={'room code not found'}>
+            <Layout title={'room code not found'} bgcolors={["white"]}>
                 <h1>Roomcode not found</h1>
             </Layout>
         )
     }
-    else if(Date.now() < config.date.getTime()){
+    else if(Date.now() < date.getTime()){
         return(
-            <Layout title={'No peeking!'}>
+            <Layout title={'No peeking!'} bgcolors={config.bgcolors.toString()}>
                 <br/>
                 <Header>It's not {config.name}'s birthday yet!</Header>
                 <br/>
                 <br/>
                 <br/>
-                <Timer activationDate={config.date}>Until {config.name}'s birthday</Timer>
+                <Timer activationDate={date}>Until {config.name}'s birthday</Timer>
             </Layout>
         )
     }
@@ -51,7 +50,7 @@ function Page({ config }){
             return () => confetti.clear()
         })
         return(
-            <Wrapper bgcolors={config.bgcolors.toString()}>
+            <Wrapper bgcolors={config.bgcolors}>
                 <Head>
                     <title>🎉Happy Birthday {config.name}!!!🎉</title>
                 </Head>
@@ -70,22 +69,6 @@ function Page({ config }){
                         </Front>
                         <Back>
                             <p>Hai</p>
-                        </Back>
-                    </FlipWrapper>
-                    <FlipWrapper>
-                        <Front>
-                            <p>Hai1</p>
-                        </Front>
-                        <Back>
-                            <p>Hai1</p>
-                        </Back>
-                    </FlipWrapper>
-                    <FlipWrapper>
-                        <Front>
-                            <p>Hai2</p>
-                        </Front>
-                        <Back>
-                            <p>Hai2</p>
                         </Back>
                     </FlipWrapper>
                 </Card>

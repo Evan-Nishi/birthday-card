@@ -1,6 +1,6 @@
 import { getConnection } from '../dbConnnect';
-import CardConfig, {ICard} from '../../../schemas/cardconfig'
-
+import CardConfig from '../../../schemas/cardconfig'
+import { hash } from 'bcrypt'
 getConnection()
 
 export default async (req, res) => {
@@ -16,16 +16,22 @@ export default async (req, res) => {
             }
             break
         case 'POST':
+            let hashed = hash(req.body.password, 10, (err, hash) => {})
             try{
-                const card: ICard = new CardConfig({
-                    roomcode: req.body.roomcode,
+                const card = new CardConfig({
+                    roomcode: req.body.roomcode.toLowerCase(),
                     name: req.body.name,
                     date: req.body.date,
                     bgcolors: req.body.colors,
                     host_email: req.body.email,
                     passcode: req.body.passcode,
-                    password: req.body.password
+                    password: hashed
                 })
+
+                let validationError = card.validateSync()
+                if(validationError){
+                    throw validationError._message
+                }
 
                 const data = await card.save()
 
@@ -34,5 +40,7 @@ export default async (req, res) => {
                 res.status(400).json({success: false, error: (error.code == 11000 && error.name == 'MongoError' ? 'roomcode taken!' : error)})
             }
             break
+        default:
+            res.status(405).json({success: false, error: "invalid operation"})
     }
 }

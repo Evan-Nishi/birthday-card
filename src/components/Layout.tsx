@@ -6,12 +6,16 @@ interface WrapperProps {
     readonly bgcolors: []
 }
 
-export const Wrapper = styled.html<WrapperProps>`
+export const Wrapper = styled.div<WrapperProps>`
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
     overflow-x: hidden;
     position: absolute;
-    width: 120vw;
-    height: 120vh;
-    background: linear-gradient(45deg, ${props => props.bgcolors.toString() || "white"});
+    width: 100%;
+    height: 400%;
+    background: linear-gradient(45deg, ${props => props.bgcolors || "white"});
     background-size: 400% 400%;
     -webkit-animation: gradientBG 20s ease infinite;
     animation: gradientBG 20s ease infinite;
@@ -43,18 +47,16 @@ export const Wrapper = styled.html<WrapperProps>`
 function Layout(props){
     return(
         <Wrapper bgcolors={props.bgcolors}>
-            <div>
-                <Head>
-                    <link href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&display=swap" rel="stylesheet"></link>
-                    <title>{props.title}</title>
-                    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
-                </Head>
-                <div style={{position:"absolute",top:0,left:0,width:"100vw"}}>
-                    <div id='content'>
-                        {props.children}
-                    </div>
-                    <Footer/>
+            <Head>
+                <link href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&display=swap" rel="stylesheet"></link>
+                <title>{props.title}</title>
+                <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
+            </Head>
+            <div style={{position:"absolute",top:0,left:0,width:"100vw"}}>
+                <div id='content'>
+                    {props.children}
                 </div>
+                <Footer/>
             </div>
         </Wrapper>
     )

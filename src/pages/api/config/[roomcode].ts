@@ -21,6 +21,6 @@ export default async (req, res) => {
             }
             break
         default:
-            res.status(405).json({success: false, error: "ivalid operation"})
+            res.status(405).json({success: false, error: "invalid operation"})
     }
 }

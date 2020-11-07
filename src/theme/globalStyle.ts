@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components'
-import palette from '../theme/palette'
 //used https://webdevtrick.com/css-gradient-background/ for the background css animation
 
 const GlobalStyle = createGlobalStyle`
@@ -19,6 +18,5 @@ const GlobalStyle = createGlobalStyle`
         position: absolute;
         pointer-events: none;
     }
-
 `
 export default GlobalStyle
