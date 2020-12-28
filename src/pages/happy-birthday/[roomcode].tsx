@@ -13,8 +13,8 @@ Page.getInitialProps = async ({ query: { roomcode } }) => {
     let config, signatures
     try{
         let [conf, sig] = await Promise.all([
-            fetch(`${process.env.URL}api/config/${roomcode}`),
-            fetch(`${process.env.URL}api/signatures/${roomcode}`)
+            fetch(`https://bday-generator.vercel.app/api/config/${roomcode}`),
+            fetch(`https://bday-generator.vercel.app/api/signatures/${roomcode}`)
         ])
         config = await conf.json()
         signatures = await sig.json()
