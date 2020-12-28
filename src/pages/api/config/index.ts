@@ -16,16 +16,16 @@ export default async (req, res) => {
             }
             break
         case 'POST':
-            let hashed = hash(req.body.password, 10, (err, hash) => {})
+            //let hashed = hash(req.body.password, 10, (err, hash) => {})
             try{
                 const card = new CardConfig({
                     roomcode: req.body.roomcode.toLowerCase(),
                     name: req.body.name,
                     date: req.body.date,
-                    bgcolors: req.body.colors,
+                    bgcolors: req.body.bgcolors,
                     host_email: req.body.email,
                     passcode: req.body.passcode,
-                    password: hashed
+                    password: req.body.password
                 })
 
                 let validationError = card.validateSync()

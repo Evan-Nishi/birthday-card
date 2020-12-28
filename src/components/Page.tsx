@@ -1,11 +1,9 @@
 import styled from 'styled-components'
 import { useState, useEffect } from 'react'
 
-
 //this is very messy please fix soon
 interface FlipProps {
   flipped:boolean
-  pos: number
 }
 
 const Wrapper = styled.div<FlipProps>`
@@ -18,16 +16,12 @@ const Wrapper = styled.div<FlipProps>`
   box-shadow: -1rem 4px 8px 0 rgba(0,0,0,0.2);
   transform-origin: 0% 100%;
   transform: rotateY(-${props => props.flipped ? 180 : 0}deg);
-  z-index: (${props => props.pos});
 `
 export function FlipWrapper(props){
   const [isFlipped, setFlipped] = useState<boolean>(false)
-  let deg = 0
-  useEffect (() => {
-    deg = (isFlipped) ? 180:0
-  })
+  
   return(
-    <Wrapper onClick={() => {setFlipped(!isFlipped)}} flipped={isFlipped} pos={-1}>
+    <Wrapper onClick={() => {setFlipped(!isFlipped)}} flipped={isFlipped}>
       {props.children}
     </Wrapper>
   )
@@ -38,6 +32,7 @@ export const Front = styled.div`
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border-radius: 5px;
+  overflow: hidden;
   border-width: 0.3vw;
   border-style: solid;
   border-color: black;
@@ -50,6 +45,7 @@ export const Front = styled.div`
     border-width: .75vw;
     width: 48.3%;
   }
+
 `
 
 export const Back = styled(Front)`

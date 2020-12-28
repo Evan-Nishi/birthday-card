@@ -12,9 +12,10 @@ export const Wrapper = styled.div<WrapperProps>`
     bottom:0;
     right:0;
     overflow-x: hidden;
+    overflow-y: hidden;
     position: absolute;
     width: 100%;
-    height: 400%;
+    height: 100%;
     background: linear-gradient(45deg, ${props => props.bgcolors || "white"});
     background-size: 400% 400%;
     -webkit-animation: gradientBG 20s ease infinite;

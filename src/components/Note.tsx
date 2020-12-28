@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components'
+import styled from 'styled-components'
 import palette from '../theme/palette'
 
 
@@ -12,14 +12,15 @@ export const Signature = styled.h3`
 
 const BodyWrapper = styled.div`
   margin:0 auto;
-  width: 80%;
-  max-width: 80%;
+  width: 85%;
+  font-size: 1vw;
 `
 
 export function Body(props){
   return(
     <BodyWrapper>
-      <p>{props.children}</p>
+      <p>{props.message}</p>
+      <Signature>-{props.author}</Signature>
     </BodyWrapper>
   )
 }

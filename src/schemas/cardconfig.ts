@@ -19,7 +19,7 @@ export const CardSchema: Schema = new Schema({
     name: {type: String, required: true},
     date: {type: Date, required: true},
     bgcolors: {type:[String], maxlength: 8},
-    host_email: {type: String, required: true, match: [emailRegex, 'must be a valid email']},
+    host_email: {type: String, required: true},
     passcode: {type: String, required: false, minlength: [5, 'passcode too short']},
     password: {type: String, required: true, minlength: [8, 'password too short']}
 })

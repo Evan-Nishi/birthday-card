@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: sans-serif;
         height: 100vw;
         overflow-x: hidden;
+        overflow-y:hidden;
     }
     .flipped{
         transform: rotateY(180deg);

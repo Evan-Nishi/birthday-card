@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+
 
 const Wrapper = styled.div`
   perspective: 100vw;
@@ -15,9 +16,10 @@ const Wrapper = styled.div`
     transition: all 0.5s ease-out;
   }
 `
+//  margin-left: 37.5vw;
 
 function Card(props){
-  const [pageNum, setPage] = useState<number>(0);
+  //const [pageNum, setPage] = useState<number>(0)
   return(
     <Wrapper>
       {props.children}

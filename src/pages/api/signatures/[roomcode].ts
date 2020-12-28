@@ -2,7 +2,6 @@
 import { getConnection } from '../dbConnnect'
 import Signature from '../../../schemas/signature'
 import CardConfig from '../../../schemas/cardconfig'
-import { assert } from 'console'
 
 getConnection()
 
@@ -27,7 +26,7 @@ export default async (req, res) => {
         case 'POST':
             try{
                 const card = await CardConfig.findOne({roomcode: roomcode})
-                if(card.passcode == req.body.passcode){ //very minimal security, ok in this context no token required
+                if(card.passcode == req.body.passcode || !card.passcode){ //very minimal security, ok in this context no token required
                     const signature = new Signature({
                         roomcode: roomcode,
                         first_name: req.body.first,
@@ -36,7 +35,7 @@ export default async (req, res) => {
                     })
 
                     let validationError = signature.validateSync()
-                    //assert.equal(validationError.erros)
+                    //assert.equal(validationError.error)
 
                     const data = await signature.save()
                     res.status(200).json({success: true, data: data})
