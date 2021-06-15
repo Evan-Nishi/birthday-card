@@ -4,7 +4,7 @@ let emailRegex: RegExp = /\S+@\S+\.\S+/ //very loose but oke
 
 export interface ICard extends Document {
     roomcode: string
-    front_link: string
+    front: string
     imlink: string
     name: string
     date: Date
@@ -17,7 +17,7 @@ export interface ICard extends Document {
 
 export const CardSchema: Schema = new Schema({
     roomcode: {type: String, required: true, unique: true},
-    front_link: {type:String, required: false},
+    front: {type: String, required: false},
     imlink: {type: String, required: false},
     name: {type: String, required: true},
     date: {type: Date, required: true},
