@@ -34,8 +34,8 @@ export default async (req, res) => {
                 }
 
                 const data = await card.save()
-
                 res.status(200).json({success: true})
+                console.log('card created successfully')
             } catch (error) {
                 res.status(400).json({success: false, error: (error.code == 11000 && error.name == 'MongoError' ? 'roomcode taken!' : error)})
             }
