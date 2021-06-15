@@ -107,10 +107,13 @@ function Page({ config, signatures }){
                     <FlipWrapper>
                         <Front>
                             <h3>Happy Birthday {config.data.name}!</h3>
+                            <br/>
+                            <br/>
                             <Image 
                                 src={config.data.front}
-                                width= {"50%"}
-                                height= {"50%"}
+                                width={"0.5"}
+                                height={"0.5"}
+                                layout="responsive"
                             />
                         </Front>
                         <Back>
