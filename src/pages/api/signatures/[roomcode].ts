@@ -33,7 +33,7 @@ export default async (req, res) => {
                         last_name: req.body.last,
                         message: req.body.message
                     })
-
+                    
                     let validationError = signature.validateSync()
                     //assert.equal(validationError.error)
 

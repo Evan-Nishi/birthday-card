@@ -51,7 +51,7 @@ function Page({ config, signatures }){
         )
     }
     else{
-        let yearOld = config.year_old
+        let yearOld = config.data.year_old
         let suf = ''
 
         //this is horrible
