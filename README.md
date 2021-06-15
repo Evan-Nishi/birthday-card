@@ -20,9 +20,11 @@ example:
 	"roomcode": "yokai",
 	"name": "Yokai",
 	"date": "1/1/2021",
+    "year_old": 1,
 	"bgcolors": ["#B57EDC", "#D198F9", "#EEB4FF", "#FFDoFF", "#FFECFF"],
-    "host_email": "birbboi@evannishi.me",
+    "email": "birbboi@evannishi.me",
 	"password": "thisCodeBigBad"
 }
+
 
 sorry I'm bad at making docs, this codebase is a burning pile of spaghet, and this is supposed to only be for personal use 

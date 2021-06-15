@@ -31,6 +31,8 @@ Page.getInitialProps = async ({ query: { roomcode } }) => {
 
 function Page({ config, signatures }){
     let date = ( config ? new Date(config.data.date): new Date("0"))
+    console.log(config.data)
+    let yearOld = config.data.old
     if( !config ){
         return(
             <Layout title={'room code not found'} bgcolors={["white"]}>
@@ -51,8 +53,9 @@ function Page({ config, signatures }){
         )
     }
     else{
-        let yearOld = config.data.year_old
         let suf = ''
+        console.log("years old: " + yearOld)
+        console.log("bgcolors" + config.data.bgcolors)
 
         //this is horrible
         if(yearOld >= 11 && yearOld <= 13){
