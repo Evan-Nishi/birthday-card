@@ -15,7 +15,7 @@ export default async (req, res) => {
                 if(!card){
                     return res.status(404).json( {success: false, error: 'invalid room code'},  )
                 }
-                res.status(200).json({success: true, data: {name: card.name, date: card.date, bgcolors: card.bgcolors, email: card.host_email, old: card.year_old}}) 
+                res.status(200).json({success: true, data: {name: card.name, date: card.date, bgcolors: card.bgcolors, front_link: card.front_link, old: card.year_old}}) 
             } catch (error) {
                 res.status(400).json({success: false, error: error })
             }
