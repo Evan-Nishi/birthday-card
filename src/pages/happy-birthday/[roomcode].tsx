@@ -106,7 +106,7 @@ function Page({ config, signatures }){
                     <FlipWrapper>
                         <Front>
                             <h3>Happy Birthday {config.data.name}!</h3>
-                            <img src={config.data.front} style={{width: "50%", height: "50%", margin: "auto"}}></img>
+                            <img src={config.data.front} style={{width: "50%", height: "50%", margin: "auto", borderRadius: "9999999999"}}></img>
                         </Front>
                         <Back>
                             <Body author={signatures.data[0].first_name} message={signatures.data[0].message}></Body>
