@@ -7,6 +7,7 @@ export interface ICard extends Document {
     roomcode: string
     name: string
     date: Date
+    year_old: number
     bgcolors: [string]
     host_email: string
     passcode: string
@@ -18,6 +19,7 @@ export const CardSchema: Schema = new Schema({
     roomcode: {type: String, required: true, unique: true},
     name: {type: String, required: true},
     date: {type: Date, required: true},
+    year_old: {type: Number, required: true},
     bgcolors: {type:[String], maxlength: 8},
     host_email: {type: String, required: true},
     passcode: {type: String, required: false, minlength: [5, 'passcode too short']},

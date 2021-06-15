@@ -7,9 +7,10 @@ To make a birthday card send a POST request in json to https://bday.evannishi.me
 {
     roomcode: String //what the link is going to be ie bday.evannishi.me/\[roomcode\],
     name: String //the name of the person,
-    date: Date //the date including year of BIRTH (for age calculation)
-    bgcolors: Array of Strings //each string should be a hex val that will be one section of the flowy background
-    host_email: String //email of host
+    date: Date //the date including year,
+    old: Number //year oldm
+    bgcolors: Array of Strings //each string should be a hex val that will be one section of the flowy background,
+    email: String //email of host
     passcode: String //optional passcode for accessing card
     password: String //not optional password for editing card
 }

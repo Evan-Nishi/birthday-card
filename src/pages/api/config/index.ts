@@ -22,6 +22,7 @@ export default async (req, res) => {
                     roomcode: req.body.roomcode.toLowerCase(),
                     name: req.body.name,
                     date: req.body.date,
+                    year_old: req.body.old,
                     bgcolors: req.body.bgcolors,
                     host_email: req.body.email,
                     passcode: req.body.passcode,
