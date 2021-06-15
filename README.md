@@ -28,3 +28,13 @@ example:
 
 
 sorry I'm bad at making docs, this codebase is a burning pile of spaghet, and this is supposed to only be for personal use 
+
+{
+	"roomcode": "krw",
+	"name": "Kailani",
+	"date": "9/14/2021",
+	"old": 18,
+	"bgcolors":["rgb(181, 126, 220)", "rgb(209, 152, 249)", "rgb(238, 180, 255)", "rgb(255, 13, 255)", "rgb(255, 236, 255)", "rgb(255, 255, 255)"],
+	"email": "evantest@evannishi.me",
+	"password": "IsholdCleep"
+}

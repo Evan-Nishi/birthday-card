@@ -3,7 +3,8 @@ import { Schema, Document, model, models } from 'mongoose'
 let emailRegex: RegExp = /\S+@\S+\.\S+/ //very loose but oke
 
 export interface ICard extends Document {
-    pfp: string
+    front_link: string
+    imlink: string
     roomcode: string
     name: string
     date: Date
@@ -15,7 +16,8 @@ export interface ICard extends Document {
 }
 
 export const CardSchema: Schema = new Schema({
-    pfp: {required: false},
+    front_link: {type:String, required: false},
+    imlink: {type: String, required: false},
     roomcode: {type: String, required: true, unique: true},
     name: {type: String, required: true},
     date: {type: Date, required: true},
