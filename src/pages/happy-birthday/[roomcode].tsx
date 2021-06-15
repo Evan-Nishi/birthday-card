@@ -51,7 +51,22 @@ function Page({ config, signatures }){
         )
     }
     else{
-        console.log(signatures)
+        let yearOld = (new Date().getFullYear() - date.getFullYear())
+        let suf = ''
+
+        //this is horrible
+        if(yearOld >= 11 && yearOld <= 13){
+            suf = 'th'
+        } else if(yearOld % 10 == 3){
+            suf = 'rd'
+        } else if(yearOld % 10 == 2){
+            suf = 'nd'
+        } else if(yearOld % 10 == 1){
+            suf = 'st'
+        } else {
+            suf = 'th'
+        }
+        //console.log(signatures)
         const [confettiOn, setConfetti] = useState<boolean>(true)
         useEffect(() => {
             const confettiSettings = { target: 'confetti-card', respawn: true, start_from_edge: true, max: 100}
@@ -67,7 +82,7 @@ function Page({ config, signatures }){
         return(
             <Wrapper bgcolors={config.data.bgcolors.toString()}>
                 <Head>
-                    <title>🎉Happy Birthday {config.data.name}!!!🎉</title>
+                    <title>🎉Happy {yearOld.toString() + suf} Birthday {config.data.name}!!!🎉</title>
                 </Head>
                 <canvas id="confetti-card"/>
                 <br/>
@@ -87,7 +102,7 @@ function Page({ config, signatures }){
                     </FlipWrapper>
                     <FlipWrapper>
                         <Front>
-                            <h3>Happy 16th Birthday {config.data.name}!</h3>
+                            <h3>Happy Birthday {config.data.name}!</h3>
                         </Front>
                         <Back>
                             <Body author={signatures.data[0].first_name} message={signatures.data[0].message}></Body>
