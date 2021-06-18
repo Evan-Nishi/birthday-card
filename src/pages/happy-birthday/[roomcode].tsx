@@ -41,7 +41,7 @@ function Page({ config, signatures }){
             </Layout>
         )
     }
-    else if(Date.now() < date.getTime()){
+    else if(Date.now() > date.getTime()){
         return(
             <Layout title={'No peeking!'} bgcolors={config.data.bgcolors.toString()}>
                 <br/>
