@@ -109,11 +109,10 @@ function Page({ config, signatures }){
                             <h3>Happy Birthday {config.data.name}!</h3>
                             <br/>
                             <br/>
-                            <Image 
+                            <img
                                 src={config.data.front}
                                 width={"0.5"}
                                 height={"0.5"}
-                                layout="responsive"
                             />
                         </Front>
                         <Back>

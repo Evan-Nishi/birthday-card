@@ -21,7 +21,6 @@ export default async (req, res) => {
                 const card = new CardConfig({
                     roomcode: req.body.roomcode.toLowerCase(),
                     front: req.body.front,
-                    imlink: req.body.link,
                     name: req.body.name,
                     date: req.body.date,
                     year_old: req.body.old,
