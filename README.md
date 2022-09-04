@@ -19,15 +19,13 @@ create card example:
 
 create message example:
 >{\
->   "roomcode": "yokai",\
 >   "first": "Evan",\
 >   "last": "Nishi",\
 >   "message": "Happy birthday son!"\
 >}
 
-Sorry I'm bad at making docs, this codebase is a burning pile of spaghet, and this is supposed to only be for personal use.
-
-TODO (let's be honest this proj dead):
+NOTE this was meant only for personal use and has literally no security, so any data stored on the mongo cluster is basically freely open to the web
+TODO:
 - Documentation
 - Security
 - Error handling
